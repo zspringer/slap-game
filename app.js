@@ -12,7 +12,7 @@ var Player = function (name) {
     };
     this.health = 100;
     this.hits = 0;
-    this.addMods = function () {
+    this.addMods = function (items) {
         var modifierTotal = 0;
         for (var i = 0; i < Player.items.length; i++) {
             var item = Player.items[i];
@@ -44,7 +44,8 @@ target.items.push(items.shield, items.bomb, items.sword)
 //________________________________________________________________
 
 function damage(attackType) {
-        target.health += attackType;
+        //target.health += attackType;
+        target.health -= attackType * target.addMods();
         //debugger
         target.hits += 1
         //alert(health)
@@ -57,9 +58,9 @@ document.getElementById("button-container").innerHTML = `
         <button class="button" type="button" onClick="damage(${target.attackType.slap})">Slap</button>
         <button class="button" type="button" onClick="damage(${target.attackType.punch})">Punch</button>
         <button class="button" type="button" onClick="damage(${target.attackType.kick})">Kick</button>
-        <button class="button" type="button" onClick="damage(${target.slap})">Shield</button>
-        <button class="button" type="button" onClick="damage(${target.punch})">Bomb</button>
-        <button class="button" type="button" onClick="damage(${target.kick})">Sword</button>
+        <button class="button" type="button" onClick="damage(${target.items.shield})">Shield</button>
+        <button class="button" type="button" onClick="damage(${target.items.bomb})">Bomb</button>
+        <button class="button" type="button" onClick="damage(${target.items.sword})">Sword</button>
 `
 
 
