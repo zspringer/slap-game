@@ -14,11 +14,10 @@ var Player = function (name) {
 
 }
 var kenny = new Player("Kenny Powers")
-//console.log(target)
 
 //_______________________________________________________________
 //constructor for items
-var Item = function (name, modifier, description){
+function Item(name, modifier, description) {
     this.name = name;
     this.modifier = modifier;
     this.description = description;
@@ -28,97 +27,53 @@ var Item = function (name, modifier, description){
 var items = {
     shield: new Item("Shield", 0.3, "This is an awesome shield!"),
     bomb: new Item("Bomb", 0.9, "This is an awesome bomb!"),
-    sword: new Item("Sword", 0.4, "This is an awesome sword!"),
+    sword: new Item("Sword", 0.4, "This is an awesome sword!")
 }
 
-var mod = []
+//kenny.items.push(items.shield, items.bomb, items.sword)
+
+var modifiersBeingUsed = kenny.items;
 
 function sumMods() {
     sum = 0;
-    for (var i = 0; i < mod.length; i++){
-        sum += mod[i]
+    for (var i = 0; i < modifiersBeingUsed.length; i++) {
+        sum += modifiersBeingUsed[i].modifier
     } return sum
-    document.write('Total amount of modifiers is ' + sum)
 }
 
-function damage(attackType) {
+function damage(attackType, modifier) {
     if (sumMods() > 0) {
-    kenny.health += ((attackType) * sumMods());
+        kenny.health += ((attackType) * sumMods());
     } else {
-       kenny.health += attackType; 
+        kenny.health += attackType;
     }
     kenny.hits += 1;
     update();
 }
 
-/*function spoof(attackType, mod){
-    kenny.health += (attackType * total)
-    kenny.hits += 1
-    update();
-}*/
-
-/*function calculateModifiers() {
-    for (var i = 0; sum = 0, i < this.items.length; sum +=[i++]);
-    for (var i = 0; i < this.items.length; i++) {
-        var item = this.items[i].modifier;
-        modifierTotal += item[modifier];
-    
-    return sum
-}*/
-
-
-/*function damage(attackType) {
-    //target.health += attackType;
-    kenny.health += attackType * calculateModifiers();
-    //debugger
-    kenny.hits += 1
-    //alert(health)
-    update();
-}*/
-
-/*function giveShield() {
-    kenny.items.push(items.shield)
-}*/
-
-function giveShield() {
-    var shield = 0.3
-    mod.push(shield)
+function giveMod(modType) {
+    kenny.items.push(items[modType])
 }
 
-function giveBomb() {
-    var bomb = 0.9
-    mod.push(bomb)
-}
-
-function giveSword() {
-    var sword = 0.4
-    mod.push(sword)
-}
-
-//console.log(items)
-//target.items.push(items.shield, items.bomb, items.sword)
-
-
-//________________________________________________________________
-
-
-
-
-//target is actually the "player" gets passed through the player function
-//to access the properties of the player, you need to use "target" as that is what variable I set the individual player to
 document.getElementById("button-container").innerHTML = `
-        <button class="button" type="button" onClick="damage(${kenny.attackType.slap})">Slap</button>
-        <button class="button" type="button" onClick="damage(${kenny.attackType.punch})">Punch</button>
-        <button class="button" type="button" onClick="damage(${kenny.attackType.kick})">Kick</button>
-        <button class="button" type="button" onClick="giveShield()">Shield</button>
-        <button class="button" type="button" onClick="giveBomb()">Bomb</button>
-        <button class="button" type="button" onClick="giveSword()">Sword</button>
+        <div class=""attack">
+            <h3>Attack options</h3>
+                <button class="button" type="button" onClick="damage(${kenny.attackType.slap})">Slap</button>
+                <button class="button" type="button" onClick="damage(${kenny.attackType.punch})">Punch</button>
+                <button class="button" type="button" onClick="damage(${kenny.attackType.kick})">Kick</button>
+        </div>
+        <div class="lessDamage">
+            <h3>Take less damage</h3>
+                <button class="button" type="button" onClick="giveMod('shield')">Shield</button>
+                <button class="button" type="button" onClick="giveMod('bomb')">Bomb</button>
+                <button class="button" type="button" onClick="giveMod('sword')">Sword</button>
+        </div>
 `
-
 
 //responsible for updating the user interface whenever a value changes
 function update() {
     document.getElementById("health").innerHTML = kenny.health
     document.getElementById("name").innerHTML = kenny.name
     document.getElementById("hits").innerHTML = kenny.hits
+    document.getElementById("options").innerHTML = sumMods()
 }
