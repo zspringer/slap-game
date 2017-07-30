@@ -41,11 +41,11 @@ function sumMods() {
     document.write('Total amount of modifiers is ' + sum)
 }
 
-function damage() {
+function damage(attackType) {
     if (sumMods() > 0) {
-    kenny.health += ((kenny.attackType.slap) * sumMods());
+    kenny.health += ((attackType) * sumMods());
     } else {
-       kenny.health += kenny.attackType.slap; 
+       kenny.health += attackType; 
     }
     kenny.hits += 1;
     update();
