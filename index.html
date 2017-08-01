@@ -5,22 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slap-Game!!</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="image">
+        <span>
+        <img src="http://media.salon.com/2013/11/eastbound-down-danny-mcbridepng-cb041b6ab2accf3c.png" alt="Kenny Powers">
+        </span>
         <div class="header">
         <span>Name:<span id="name"></span></span>
         <span>Health:<span id="health">0</span></span>
         <span>Hits:<span id="hits">0</span></span>
         </div>
-        <img src="https://media.giphy.com/media/qi8Yhj4pKcIec/giphy.gif" alt="Kenny Powers">
     </div>
     <div id="button-container">
         
     </div>
     <span>Options choosen that decrease damage:<span id="options">0</span></span>
+    
+
+    <!--LOAD EXTERNAL LIBRARIES -->
+
+    <!--LOAD SERVICES-->
+    <script src="slap-service.js"></script>
+
+    <!--LOAD CONTROLLERS-->
+    <script src="slap-controller.js"></script>
+
+    <!--INSTANTIATE THE APPLICATION-->
     <script src="app.js"></script>
+
+
+
 </body>
 </html>

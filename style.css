@@ -2,3 +2,16 @@
     max-height: 200px;
     max-width: 200px;
 }
+
+body{
+    background-color: black;
+    color: white;
+}
+.button{
+    background-color: grey
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
