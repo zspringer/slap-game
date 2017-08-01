@@ -68,6 +68,9 @@ function GameService() {
             kenny.health += kenny.attackType[type];
         }
         kenny.hits += 1;
+        if (kenny.health <= 0){
+            kenny.health = 0;
+        }
     }
 
     slapService.giveMod = function giveMod(modType) {

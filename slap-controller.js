@@ -25,6 +25,9 @@ function SlapController() {
         //a kenny getter function
         var kenny = slapService.getKenny()
         document.getElementById("health").innerHTML = kenny.health.toFixed(2)
+        if (kenny.health === 0){
+            alert("Kenny dead")
+        }
         document.getElementById("name").innerHTML = kenny.name
         document.getElementById("hits").innerHTML = kenny.hits
         document.getElementById("options").innerHTML = slapService.sumMods()
