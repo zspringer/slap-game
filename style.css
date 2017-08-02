@@ -1,3 +1,7 @@
+.total-page{
+    display: flex;
+}
+
 .img{
     max-height: 200px;
     max-width: 200px;
@@ -10,8 +14,5 @@ body{
 .button{
     background-color: grey
 }
-.header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+

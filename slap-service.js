@@ -7,7 +7,7 @@ function GameService() {
     console.log("Here we go", 5)
     var slapService = this
     //Private parts
-    var kenny = new Player("Kenny Powers")
+    var kenny = new Player("Stevie Janowski")
 
     function Player(name) {
         this.name = name;
@@ -70,12 +70,19 @@ function GameService() {
         kenny.hits += 1;
         if (kenny.health <= 0){
             kenny.health = 0;
+            //slapService.reset()
         }
     }
 
     slapService.giveMod = function giveMod(modType) {
         kenny.items.push(items[modType])
         console.log(kenny.items)
+    }
+
+    slapService.reset = function reset() {
+        kenny.health = 100
+        kenny.hits = 0
+        kenny.items = []
     }
 
 }
