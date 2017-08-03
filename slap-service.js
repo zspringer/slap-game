@@ -7,8 +7,6 @@ function GameService() {
 
     function Player(name) {
         this.name = name;
-        //this.modifier = modifier;//use the addMods section
-        //this.description = description;
         this.items = [];
         this.attackType = {
             "slap": -1,
@@ -47,7 +45,6 @@ function GameService() {
 
 
     slapService.sumMods = function sumMods() {
-        console.log("sumMods from service")
         var modifiersBeingUsed = kenny.items;
         var sum = 0;
         for (var i = 0; i < modifiersBeingUsed.length; i++) {
@@ -57,7 +54,6 @@ function GameService() {
 
 
     slapService.damage = function damage(type) {
-        console.log("Damage from service")
         if (slapService.sumMods() > 0) {
             kenny.health += (kenny.attackType[type]) * slapService.sumMods();
         } else {
@@ -66,7 +62,6 @@ function GameService() {
         kenny.hits += 1;
         if (kenny.health <= 0){
             kenny.health = 0;
-            //slapService.reset()
         }
     }
 
