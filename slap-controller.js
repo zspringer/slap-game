@@ -23,35 +23,51 @@ function SlapController() {
             <button class="button" type="button" onclick="app.controllers.slapController.reset()">Reset Game</button>
         </div>
 `
-   function update() {
+    console.log(image)
+    var image = ""
+
+    function changeImage(health) {
+        if (health > 0) {
+            image = "https://uproxx.files.wordpress.com/2013/11/stevie-kruger.jpg?w=650&quality=100&h=351"
+        }
+        if (health === 0) {
+            image = "https://brooklynsteez.com/products/square/86144.png"
+        }
+    }
+
+    function update() {
         //a kenny getter function
         var kenny = slapService.getKenny()
         document.getElementById("health").innerHTML = kenny.health.toFixed(2)
         document.getElementById("name").innerHTML = kenny.name
         document.getElementById("hits").innerHTML = kenny.hits
-        if (kenny.health === 0){
-            alert("Your nightmare is over!!!")
-            slapService.reset()
-            update()
-        }
+        changeImage(kenny.health);
+        console.log(kenny.health)
+        document.getElementById("image").innerHTML = `
+        <img src="${image}">`
         document.getElementById("options").innerHTML = slapService.sumMods()
+        if (kenny.health === 0) {
+            alert("Your nightmare is over!!!")
+            //slapService.reset()
+            //update()
+        }
     }
 
     //PUBLIC PARTS
     //create a new damage function
     //"this" makes it publicly available to the service
-    this.damage = function damage(attackType){
+    this.damage = function damage(attackType) {
         slapService.damage(attackType)
         update()
     }
     //give item just like from damage above
-    this.giveMod = function giveMod(modType){
+    this.giveMod = function giveMod(modType) {
         slapService.giveMod(modType)
         //slapService.giveMod[modType]
         update()
     }
 
-    this.reset = function reset(){
+    this.reset = function reset() {
         slapService.reset()
         update()
     }

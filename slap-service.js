@@ -1,10 +1,6 @@
-console.log("Here we go", 1)
 //The code that maintains data integrity
 
-
-
 function GameService() {
-    console.log("Here we go", 5)
     var slapService = this
     //Private parts
     var kenny = new Player("Stevie Janowski")
@@ -38,7 +34,7 @@ function GameService() {
         sword: new Item("Sword", 0.4, "This is an awesome sword!")
     }
 
-
+    
 
 
     //Public parts
@@ -75,8 +71,11 @@ function GameService() {
     }
 
     slapService.giveMod = function giveMod(modType) {
+        if (kenny.items.length <= 3){
         kenny.items.push(items[modType])
-        console.log(kenny.items)
+        } else {
+            return
+        }
     }
 
     slapService.reset = function reset() {
